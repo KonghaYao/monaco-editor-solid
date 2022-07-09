@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            border: 0;
+            margin: 0;
+            width: 100vw;
+        }
+    </style>
+    <body></body>
+    <script type="importmap">
+        {
+            "imports": {
+                "monaco-editor-solid": "https://cdn.jsdelivr.net/npm/monaco-editor-solid@1.0.4/dist/index.min.js",
+                "monaco-editor-solid": "../dist/index.js",
+                "solid-js": "https://cdn.skypack.dev/solid-js",
+                "solid-js/web": "https://cdn.skypack.dev/solid-js/web",
+                "vscode-icons-js": "https://cdn.skypack.dev/vscode-icons-js"
+            }
+        }
+    </script>
+    <script type="module">
+        import { render } from "solid-js/web";
+        import { FileEditorList } from "monaco-editor-solid";
+        render(
+            () =>
+                FileEditorList({
+                    toggleExplorer(bool) {
+                        console.log("open Explorer");
+                    },
+                    fs: {
+                        promises: {
+                            readFile() {
+                                console.log(arguments);
+                                return "vers";
+                            },
+                        },
+                    },
+                    files: [["index.html", "343434.js"], ["23232.json"], []],
+                    expose(data) {
+                        console.log(data);
+                    },
+                }),
+            document.body
+        );
+    </script>
+</html>

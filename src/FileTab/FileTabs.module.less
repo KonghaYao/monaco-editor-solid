@@ -1,0 +1,18 @@
+.file_tabs {
+    @apply flex items-center cursor-pointer select-none;
+}
+.file_tab {
+    @apply flex justify-between text-xs items-center p-2 cursor-pointer;
+    .icons {
+        @apply text-xs;
+    }
+    img {
+        @apply h-4 w-4;
+    }
+    &[data-selected="true"] {
+        background-color: var(--vscode-textCodeBlock-background);
+    }
+    &:hover {
+        background-color: var(--vscode-textCodeBlock-background);
+    }
+}
