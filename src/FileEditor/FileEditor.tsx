@@ -1,7 +1,7 @@
 import { Component, lazy, onMount } from "solid-js";
 import { Suspense } from "solid-js/web";
 import { getMonaco } from "../getMonaco/getMonaco";
-import style from "./FileEditor.module.less";
+import style from "../FileEditor.module.less";
 import { FileTabs } from "../FileTab/FileTabs";
 import { FileManager } from "../FileManager";
 import { FileModel } from "./FileModel";

@@ -10,6 +10,7 @@ lerna-debug.log*
 rollup-web
 node_modules
 dist
+types
 dist-ssr
 *.local
 
