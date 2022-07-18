@@ -13,7 +13,7 @@ type Props = {
 import { FileTabs } from "./FileTab/FileTabs";
 import { FileManager } from "./FileManager";
 import { FileModel } from "./FileModel";
-import { editor } from "@codingame/monaco-editor";
+import type { editor } from "@codingame/monaco-editor";
 
 type FileEditorInstanceType = (
     controller: FileManager,
@@ -100,7 +100,6 @@ export const createFileEditor = (
             return {
                 default: FileEditorInstance(manager, () => {
                     info.watchingIndex = id;
-                    console.log("点击");
                 }),
             };
         });

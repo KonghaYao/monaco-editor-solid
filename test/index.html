@@ -40,11 +40,11 @@
                         promises: {
                             readFile() {
                                 console.log(arguments);
-                                return "vers";
+                                return "<html></html>";
                             },
                         },
                     },
-                    files: [["index.html", "343434.js"], ["23232.json"], []],
+                    files: [["/index.html", "/343434.js"], ["/23232.json"], []],
                     expose(data) {
                         console.log(data);
                     },

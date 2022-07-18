@@ -9,7 +9,12 @@ export class FileModel {
     async init(path: string, code: string) {
         this.path = path;
         const language = languageDetection(path);
-        this.model = monaco.editor.createModel(code, language);
+
+        this.model = monaco.editor.createModel(
+            code,
+            language,
+            monaco.Uri.file(path)
+        );
     }
     destroy() {
         this.model.dispose();
