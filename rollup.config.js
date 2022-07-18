@@ -1,4 +1,3 @@
-import alias from "@rollup/plugin-alias";
 import babel from "@rollup/plugin-babel";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import fs, { writeFileSync } from "fs-extra";

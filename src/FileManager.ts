@@ -1,6 +1,6 @@
 import mitt from "mitt";
-import { FileModel } from "./FileModel";
-import { wrapper } from "./utils/loadMonaco";
+import { FileModel } from "./FileEditor/FileModel";
+import { wrapper } from "./getMonaco/loadMonaco";
 
 /* 管理 Monaco Editor 的一个类 */
 export class FileManager {

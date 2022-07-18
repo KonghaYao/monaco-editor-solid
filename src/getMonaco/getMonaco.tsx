@@ -1,5 +1,5 @@
-import { applyTheme } from "./initTheme";
-import { load } from "./utils/loadMonaco";
+import { applyTheme } from "../Theme/initTheme";
+import { load } from "./loadMonaco";
 const Loader = {
     loading: false,
     loadResult: undefined as undefined | ReturnType<typeof load>,

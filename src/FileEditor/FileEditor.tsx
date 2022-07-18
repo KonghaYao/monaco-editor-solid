@@ -1,7 +1,11 @@
 import { Component, lazy, onMount } from "solid-js";
 import { Suspense } from "solid-js/web";
-import { getMonaco } from "./getMonaco";
+import { getMonaco } from "../getMonaco/getMonaco";
 import style from "./FileEditor.module.less";
+import { FileTabs } from "../FileTab/FileTabs";
+import { FileManager } from "../FileManager";
+import { FileModel } from "./FileModel";
+import type { editor } from "@codingame/monaco-editor";
 type Props = {
     fileList: string[];
     getFile(path: string): Promise<{ code: string; language?: string }>;
@@ -9,11 +13,6 @@ type Props = {
     requestSelect(): void;
     defaultTheme?: string;
 };
-
-import { FileTabs } from "./FileTab/FileTabs";
-import { FileManager } from "./FileManager";
-import { FileModel } from "./FileModel";
-import type { editor } from "@codingame/monaco-editor";
 
 type FileEditorInstanceType = (
     controller: FileManager,

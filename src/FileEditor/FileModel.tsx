@@ -1,4 +1,4 @@
-import { wrapper } from "./utils/loadMonaco";
+import { wrapper } from "../getMonaco/loadMonaco";
 import { editor } from "@codingame/monaco-editor";
 
 /* 保存单个文件 Monaco Model 的类 */

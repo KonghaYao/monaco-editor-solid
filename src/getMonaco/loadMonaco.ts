@@ -1,5 +1,5 @@
 import MonacoLoader from "@monaco-editor/loader";
-import { loadScript } from "./loadScript";
+import { loadScript } from "../utils/loadScript";
 
 /** 获取 Monaco 对象，只会进行一次网络请求  */
 export const loadMonaco = async (vsCDN: string) => {
