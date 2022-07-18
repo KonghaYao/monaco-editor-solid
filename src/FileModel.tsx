@@ -8,11 +8,12 @@ export class FileModel {
     model!: editor.ITextModel;
     async init(path: string, code: string) {
         this.path = path;
-        const language = languageDetection(path);
+        // const language = languageDetection(path);
 
         this.model = monaco.editor.createModel(
             code,
-            language,
+            undefined,
+            // language,
             monaco.Uri.file(path)
         );
     }
