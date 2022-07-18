@@ -29,7 +29,8 @@
     </script>
     <script type="module">
         import { render } from "solid-js/web";
-        import { FileEditorList } from "monaco-editor-solid";
+        import { FileEditorList, wrapper } from "monaco-editor-solid";
+        console.log(wrapper);
         render(
             () =>
                 FileEditorList({
@@ -40,11 +41,24 @@
                         promises: {
                             readFile() {
                                 console.log(arguments);
-                                return "<html></html>";
+                                return `
+                                ParseResult(
+    scheme='https', 
+    netloc='juejin.im', 
+    path='/user/5da32395e51d4578200cc9c5/posts', 
+    params='', 
+    query='params=123&username=123', 
+    fragment=''
+)
+`;
                             },
                         },
                     },
-                    files: [["/index.html", "/343434.js"], ["/23232.json"], []],
+                    files: [
+                        ["/index.html", "/343434.js"],
+                        ["/23232.json"],
+                        ["/1.py"],
+                    ],
                     expose(data) {
                         console.log(data);
                     },

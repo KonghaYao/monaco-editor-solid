@@ -3,11 +3,7 @@ import { Component, createSignal, For, onCleanup } from "solid-js";
 import { createFileEditor } from "./FileEditor";
 import style from "./FileEditor.module.less";
 import { FileModel } from "./FileModel";
-import { applyTheme, AllThemes } from "./initTheme";
 import { LayoutSidebarLeft, SplitHorizontal } from "./utils/Icon";
-
-export { applyTheme, AllThemes };
-export { wrapper, getMonaco } from "./getMonaco";
 
 export type Expose = {
     watchingEditor: WatchingEditor;

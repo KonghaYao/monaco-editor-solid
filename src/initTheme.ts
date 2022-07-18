@@ -1,4 +1,4 @@
-import { wrapper } from "./getMonaco";
+import { wrapper } from "./utils/loadMonaco";
 export const AllThemes = [
     {
         name: "github-light",

@@ -1,7 +1,6 @@
-import { applyTheme } from "./initTheme";
 import mitt from "mitt";
 import { FileModel } from "./FileModel";
-import { wrapper } from "./getMonaco";
+import { wrapper } from "./utils/loadMonaco";
 
 /* 管理 Monaco Editor 的一个类 */
 export class FileManager {
@@ -46,7 +45,6 @@ export class FileManager {
             monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS,
             save
         );
-        applyTheme(this.defaultTheme);
     }
     /* 根据 Model 查找 FileModel */
     findFileCache(model: FileModel["model"]) {

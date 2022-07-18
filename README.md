@@ -58,8 +58,9 @@ render(
 This Monaco Version is @codingame/monaco-editor. We will load it in FileEditorList automatically, but you can load it yourself or just let us to preload.
 
 ```js
-import { loadMonaco } from "monaco-editor-solid";
-await loadMonaco(); // it will add a global  `monaco`
+import { getMonaco } from "monaco-editor-solid";
+await getMonaco(); // it will add a global  `monaco`
+await getMonaco(cdnURL); // You can replace CDN  of @codingame/monaco-editor
 ```
 
 ## About Themes
