@@ -1,7 +1,8 @@
 .file_editor {
-    border: 1px solid var(--vscode-textCodeBlock-background);
+    border-bottom: 1px solid var(--vscode-textCodeBlock-background);
     box-sizing: border-box;
-    @apply w-full h-full flex-grow flex flex-col relative;
+    /* 这里必须使用 overflow-hidden 来保证全等分 */
+    @apply h-full w-full flex flex-col overflow-hidden relative col-span-1 row-span-1;
     [data-class="editor"] {
         @apply w-full h-full flex-grow;
     }
@@ -13,12 +14,12 @@
     @apply flex items-center justify-between cursor-default m-1;
 }
 .void {
-    @apply flex-grow flex-col h-full w-full flex justify-center items-center;
+    @apply absolute flex-grow flex-col h-full w-full flex justify-center items-center top-0 left-0;
     [data-button] {
         background-color: var(--vscode-textCodeBlock-background);
         @apply p-1 m-1;
     }
 }
 .file_list {
-    @apply grid grid-cols-1 h-full flex-grow;
+    @apply w-full h-full flex-grow flex flex-col  overflow-hidden;
 }

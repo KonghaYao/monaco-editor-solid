@@ -17,9 +17,7 @@ export class FileManager {
         /* 这个模型同一全局管理 */
         public fileStore: Map<string, FileModel>,
         public id: string | number
-    ) {
-        console.log("FileManager", id);
-    }
+    ) {}
     mount(container: HTMLElement) {
         this.monacoEditor = wrapper.createEditor(container, {
             model: null,
