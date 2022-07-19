@@ -39,6 +39,9 @@
                     },
                     fs: {
                         promises: {
+                            writeFile(id, code) {
+                                console.log({ code, id });
+                            },
                             readFile() {
                                 console.log(arguments);
                                 return `

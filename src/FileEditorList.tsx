@@ -14,7 +14,6 @@ export const FileEditorList: Component<{
     fs: FS;
     expose: (data: Expose) => void;
     toggleExplorer: Function;
-    defaultTheme?: string;
 }> = (props) => {
     const fs = props.fs;
     const [fileList, setFileList] = createSignal(props.files);
@@ -54,32 +53,33 @@ export const FileEditorList: Component<{
                     {SplitHorizontal()}
                 </span>
             </header>
-            {/* 使用循环遍历构建多个 Editor */}
-            <For each={fileList()}>
-                {(el) => {
-                    return (
-                        <FileEditor
-                            defaultTheme={props.defaultTheme}
-                            requestSelect={() => {
-                                props.toggleExplorer(true);
-                            }}
-                            fileList={el}
-                            getFile={getFile}
-                            closeSelf={() => {
-                                const newList = fileList().filter(
-                                    (i) => !Object.is(i, el)
-                                );
-                                // 删除保护，防止没有的事件
-                                if (newList.length === 0) {
-                                    setFileList([[]]);
-                                } else {
-                                    setFileList(newList);
-                                }
-                            }}
-                        ></FileEditor>
-                    );
-                }}
-            </For>
+            <div class={style.file_list}>
+                {/* 使用循环遍历构建多个 Editor */}
+                <For each={fileList()}>
+                    {(el) => {
+                        return (
+                            <FileEditor
+                                requestSelect={() => {
+                                    props.toggleExplorer(true);
+                                }}
+                                fileList={el}
+                                getFile={getFile}
+                                closeSelf={() => {
+                                    const newList = fileList().filter(
+                                        (i) => !Object.is(i, el)
+                                    );
+                                    // 删除保护，防止没有的事件
+                                    if (newList.length === 0) {
+                                        setFileList([[]]);
+                                    } else {
+                                        setFileList(newList);
+                                    }
+                                }}
+                            ></FileEditor>
+                        );
+                    }}
+                </For>
+            </div>
         </div>
     );
 };

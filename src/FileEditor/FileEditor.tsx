@@ -11,7 +11,6 @@ type Props = {
     getFile(path: string): Promise<{ code: string; language?: string }>;
     closeSelf(): void;
     requestSelect(): void;
-    defaultTheme?: string;
 };
 
 type FileEditorInstanceType = (
@@ -91,7 +90,7 @@ export const createFileEditor = (
         const Instance = lazy(async () => {
             const id = controllers.length;
             /* 统一的文件管理 */
-            const manager = new FileManager(fileStore, id, props.defaultTheme);
+            const manager = new FileManager(fileStore, id);
             info.watchingIndex = id;
             controllers.push(manager);
             init && (await init(manager));

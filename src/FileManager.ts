@@ -11,12 +11,15 @@ export class FileManager {
         open: { path: string; model: FileModel };
         close: { path: string };
         save: FileModel;
+        unSave: string;
     }>();
     constructor(
+        /* 这个模型同一全局管理 */
         public fileStore: Map<string, FileModel>,
-        public id: string | number,
-        public defaultTheme = "github-dark"
-    ) {}
+        public id: string | number
+    ) {
+        console.log("FileManager", id);
+    }
     mount(container: HTMLElement) {
         this.monacoEditor = wrapper.createEditor(container, {
             model: null,
@@ -27,13 +30,16 @@ export class FileManager {
             minimap: { enabled: false },
         });
 
+        this.monacoEditor.onDidChangeModelContent(() => {
+            const fileModel = this.findFileCache(this.monacoEditor.getModel()!);
+            if (fileModel) this.hub.emit("unSave", fileModel.path);
+        });
         const save = () => {
-            const model = this.monacoEditor.getModel();
-            if (model) {
-                const file = this.findFileCache(model);
-                if (file) this.saveFile(file.path);
-            }
+            const fileModel = this.findFileCache(this.monacoEditor.getModel()!);
+            console.log(this.id, fileModel);
+            if (fileModel) this.saveFile(fileModel.path);
         };
+
         this.monacoEditor.addAction({
             id: "save",
             label: "保存",
@@ -41,10 +47,6 @@ export class FileManager {
             contextMenuGroupId: "navigation",
             run: save, // 点击后执行的操作
         });
-        this.monacoEditor.addCommand(
-            monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS,
-            save
-        );
     }
     /* 根据 Model 查找 FileModel */
     findFileCache(model: FileModel["model"]) {
@@ -102,8 +104,8 @@ export class FileManager {
         }
     }
 
-    saveFile(path: string) {
-        const file = this.fileStore.get(path);
+    saveFile(path: string | FileModel) {
+        const file = typeof path === "string" ? this.fileStore.get(path) : path;
         if (file) {
             this.hub.emit("save", file);
         }
