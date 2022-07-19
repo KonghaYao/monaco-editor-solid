@@ -1,16 +1,12 @@
 import { applyTheme } from "../Theme/initTheme";
 import { load } from "./loadMonaco";
-const Loader = {
-    loading: false,
-    loadResult: undefined as undefined | ReturnType<typeof load>,
-    load,
-};
+let loadResult: undefined | ReturnType<typeof load> = undefined;
 
 export const getMonaco = async (...args: Parameters<typeof load>) => {
-    if (Loader.loadResult) return Loader.loadResult;
+    if (loadResult) return loadResult;
     // 第一次初始化 Monaco
-    Loader.loadResult = Loader.load(...args);
-    await Loader.loadResult;
+    loadResult = load(...args);
+    await loadResult;
     await applyTheme("github-dark");
-    return Loader.loadResult;
+    return loadResult;
 };
