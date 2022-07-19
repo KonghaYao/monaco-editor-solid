@@ -84,13 +84,20 @@ export class FileManager {
             this.hub.emit("open", { path, model: file });
         }
     }
+    private deleteBuffer: string[] = [];
+    /* 最多缓存多少个被删除的文件 */
+    maxCloseCache = 5;
     /* 关闭一个文件 */
     closeFile(path: string) {
         const old = this.fileStore.get(path);
         if (old) {
             // old.destroy();
             // ! 注意，虽然关闭了，我们认为为了加载速度考虑，任然保留
-            // this.fileStore.delete(path);
+            if (this.deleteBuffer.length > this.maxCloseCache) {
+                const first = this.deleteBuffer.shift();
+                first && this.fileStore.delete(first);
+            }
+            this.deleteBuffer.push(path);
             this.hub.emit("close", { path });
         }
     }
