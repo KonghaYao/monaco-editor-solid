@@ -1,6 +1,6 @@
 {
     "name": "monaco-editor-solid",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "A vscode-like monaco editor wrapper based on solid-js!",
     "repository": {
         "type": "git",
