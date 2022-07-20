@@ -1,16 +1,5 @@
 import { wrapper } from "../getMonaco/loadMonaco";
-
-export const AllThemes = [
-    {
-        name: "github-light",
-        url: "https://fastly.jsdelivr.net/npm/github-vscode-themes/dist/light.json",
-    },
-
-    {
-        name: "github-dark",
-        url: "https://fastly.jsdelivr.net/npm/github-vscode-themes/dist/dark.json",
-    },
-] as { name: string; url: string; loaded: any }[];
+import { AllThemes } from "./AllThemes";
 
 /** 全局使用 Theme */
 export const applyTheme = async (name: string) => {

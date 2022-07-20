@@ -1,6 +1,6 @@
 .file_tabs {
-    border-bottom: 1px solid var(--vscode-textCodeBlock-background);
-    @apply flex items-center cursor-pointer select-none;
+    border-bottom: 1px solid var(--vscode-editor-background);
+    @apply flex items-center cursor-pointer select-none flex-nowrap overflow-x-auto overflow-y-hidden;
 }
 .file_tab {
     @apply flex justify-between text-xs items-center p-2 cursor-pointer;
@@ -11,9 +11,6 @@
         @apply h-4 w-4;
     }
     &[data-selected="true"] {
-        background-color: var(--vscode-textCodeBlock-background);
-    }
-    &:hover {
-        background-color: var(--vscode-textCodeBlock-background);
+        background-color: var(--vscode-scrollbarSlider-background);
     }
 }

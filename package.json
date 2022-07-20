@@ -1,11 +1,15 @@
 {
     "name": "monaco-editor-solid",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "A vscode-like monaco editor wrapper based on solid-js!",
     "repository": {
         "type": "git",
         "url": "https://gitee.com/dongzhongzhidong/js-judge.git"
     },
+    "files": [
+        "dist",
+        "types"
+    ],
     "author": "Konghayao<dongzhongzhidong@qq.com>",
     "license": "Apache-2.0",
     "keywords": [

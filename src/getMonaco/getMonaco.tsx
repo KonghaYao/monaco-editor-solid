@@ -1,4 +1,3 @@
-import { applyTheme } from "../Theme/initTheme";
 import { load } from "./loadMonaco";
 let loadResult: undefined | ReturnType<typeof load> = undefined;
 
@@ -7,7 +6,7 @@ export const getMonaco = async (...args: Parameters<typeof load>) => {
     // 第一次初始化 Monaco
     loadResult = load(...args);
     await loadResult;
-    await applyTheme("github-dark");
+    // await applyTheme("github-dark");
 
     return loadResult;
 };

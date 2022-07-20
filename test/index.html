@@ -29,7 +29,11 @@
     </script>
     <script type="module">
         import { render } from "solid-js/web";
-        import { FileEditorList, wrapper } from "monaco-editor-solid";
+        import {
+            FileEditorList,
+            wrapper,
+            applyTheme,
+        } from "monaco-editor-solid";
         console.log(wrapper);
         render(
             () =>
@@ -68,5 +72,8 @@
                 }),
             document.body
         );
+        setTimeout(() => {
+            applyTheme("panda");
+        }, 4000);
     </script>
 </html>
