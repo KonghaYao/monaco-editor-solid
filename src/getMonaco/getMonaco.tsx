@@ -8,5 +8,6 @@ export const getMonaco = async (...args: Parameters<typeof load>) => {
     loadResult = load(...args);
     await loadResult;
     await applyTheme("github-dark");
+
     return loadResult;
 };

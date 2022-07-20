@@ -1,4 +1,5 @@
 import { wrapper } from "../getMonaco/loadMonaco";
+
 export const AllThemes = [
     {
         name: "github-light",
@@ -9,20 +10,18 @@ export const AllThemes = [
         name: "github-dark",
         url: "https://fastly.jsdelivr.net/npm/github-vscode-themes/dist/dark.json",
     },
-];
+] as { name: string; url: string; loaded: any }[];
 
-const themeList = new Map<string, { url: string; loaded?: boolean }>(
-    AllThemes.map((i) => {
-        return [i.name, i];
-    })
-);
 /** 全局使用 Theme */
 export const applyTheme = async (name: string) => {
-    if (themeList.has(name)) {
-        const { url, loaded } = themeList.get(name)!;
+    const item = AllThemes.find((i) => i.name === name);
+    if (item) {
+        const { url, loaded } = item;
         if (!loaded) {
-            await wrapper.defineVSCodeTheme(name, () => {
-                return fetch(url).then((res) => res.json());
+            await wrapper.defineVSCodeTheme(name, async () => {
+                const data = await fetch(url).then((res) => res.json());
+                item.loaded = data;
+                return data;
             });
         }
     }
