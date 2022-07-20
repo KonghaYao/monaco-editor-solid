@@ -18,7 +18,7 @@
     "types": "types/index.d.ts",
     "scripts": {
         "dev": "rollup -c=rollup.config.js -w",
-        "build": "rollup -c=rollup.config.js "
+        "build": "rollup -c=rollup.config.js && tsc "
     },
     "dependencies": {
         "@codingame/monaco-editor-wrapper": "^1.15.0",
