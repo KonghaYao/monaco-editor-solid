@@ -11,7 +11,7 @@ export const FileTab: Component<{
     isSave: boolean;
 }> = (props) => {
     const src =
-        "https://cdn.jsdelivr.net/gh/vscode-icons/vscode-icons/icons/" +
+        "https://jsdelivr.deno.dev/gh/vscode-icons/vscode-icons/icons/" +
         getIconForFile(props.name);
     return (
         <div

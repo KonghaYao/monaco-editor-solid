@@ -9,15 +9,15 @@ export const AllThemes = [
     },
 
     {
-        url: "https://cdn.jsdelivr.net/gh/tinkertrain/panda-syntax-vscode/dist/Panda.json",
+        url: "https://jsdelivr.deno.dev/gh/tinkertrain/panda-syntax-vscode/dist/Panda.json",
         name: "panda",
     },
     {
-        url: "https://cdn.jsdelivr.net/gh/akamud/vscode-theme-onedark/themes/OneDark.json",
+        url: "https://jsdelivr.deno.dev/gh/akamud/vscode-theme-onedark/themes/OneDark.json",
         name: "one-dark",
     },
     {
-        url: "https://cdn.jsdelivr.net/gh/azemoh/vscode-one-monokai/themes/OneMonokai-color-theme.json",
+        url: "https://jsdelivr.deno.dev/gh/azemoh/vscode-one-monokai/themes/OneMonokai-color-theme.json",
         name: "one-monokai",
     },
 ] as { name: string; url: string; loaded?: any }[];

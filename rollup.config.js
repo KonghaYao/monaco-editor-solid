@@ -15,20 +15,16 @@ export default {
         "vscode-icons-js",
         "solid-js",
         "solid-js/web",
-        "@monaco-editor/loader",
-        "monaco-editor",
+        // "monaco-editor",
     ],
     input: "./src/index.ts",
     output: {
         dir: "./dist/",
         format: "es",
-        paths: {
-            "@monaco-editor/loader":
-                "https://cdn.skypack.dev/@monaco-editor/loader",
-        },
         globals: {
             "vscode-oniguruma": "onig",
         },
+        sourcemap: true
     },
     plugins: [
         {
@@ -36,27 +32,14 @@ export default {
                 if (thisFile.startsWith("https://")) {
                     return false;
                 }
+                if (thisFile.startsWith('monaco-editor')) return { id: thisFile.endsWith('.js') ? thisFile : thisFile + '.js', external: true }
                 if (!/^[[\w:]|\.|\/]/.test(thisFile)) console.log(thisFile);
-            },
-            transform(code, id) {
-                if (id.includes("monaco-editor-wrapper")) {
-                    //! 将 * as monaco 导入转化为 default 导入，这样可以获取为 全局的 monaco
-                    return code.replace(/(\* as monaco)/, "monaco");
-                }
             },
             load(id) {
                 if (id.endsWith("onig.wasm")) {
                     // wasm 转写
-                    return `const a ='https://cdn.jsdelivr.net/npm/vscode-oniguruma/release/onig.wasm';
+                    return `const a ='https://jsdelivr.deno.dev/npm/vscode-oniguruma@1.6.2/release/onig.wasm';
                     export default a`;
-                }
-                if (id.includes("monaco-editor\\esm")) {
-                    //!
-                    if (id.includes("shiftCommand")) {
-                        return "export * from 'https://cdn.jsdelivr.net/npm/@codingame/monaco-editor/esm/vs/editor/common/commands/shiftCommand.js' ";
-                    } else {
-                        return "export default globalThis.monaco";
-                    }
                 }
             },
         },
@@ -65,14 +48,14 @@ export default {
                 //! 编程语言文件的 CDN
                 if (
                     importer.endsWith(
-                        "@codingame\\monaco-editor-wrapper\\dist\\main.js"
+                        "@codingame/monaco-editor-wrapper/dist/main.js"
                     )
                 ) {
                     return {
                         external: true,
                         id: new URL(
                             thisFile,
-                            "https://cdn.jsdelivr.net/npm/@codingame/monaco-editor-wrapper/dist/main.js"
+                            "https://jsdelivr.deno.dev/npm/@codingame/monaco-editor-wrapper@3.9.3/dist/main.js"
                         ).toString(),
                     };
                 }

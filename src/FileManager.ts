@@ -1,10 +1,10 @@
 import mitt from "mitt";
 import { FileModel } from "./FileEditor/FileModel";
-import { wrapper } from "./getMonaco/loadMonaco";
-
+import { createEditor } from "@codingame/monaco-editor-wrapper";
+import { monaco } from "@codingame/monaco-editor-wrapper";
 /* 管理 Monaco Editor 的一个类 */
 export class FileManager {
-    monacoEditor!: ReturnType<typeof wrapper["createEditor"]>;
+    monacoEditor!: ReturnType<typeof createEditor>;
     /* 向外发送事件的hub */
     hub = mitt<{
         prepare: { path: string; model: FileModel };
@@ -19,7 +19,7 @@ export class FileManager {
         public id: string | number
     ) {}
     mount(container: HTMLElement) {
-        this.monacoEditor = wrapper.createEditor(container, {
+        this.monacoEditor = createEditor(container, {
             model: null,
             autoIndent: "advanced",
             automaticLayout: true,

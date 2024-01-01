@@ -1,4 +1,4 @@
-import FS from "@isomorphic-git/lightning-fs";
+import type FS from "@isomorphic-git/lightning-fs";
 import { Component, createSignal, For, onCleanup } from "solid-js";
 import { createFileEditor } from "./FileEditor/FileEditor";
 import style from "./FileEditor.module.less";

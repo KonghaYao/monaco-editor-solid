@@ -1,4 +1,4 @@
-import { wrapper } from "../getMonaco/loadMonaco";
+import { defineVSCodeTheme } from "@codingame/monaco-editor-wrapper";
 import { AllThemes } from "./AllThemes";
 
 /** 全局使用 Theme */
@@ -7,7 +7,7 @@ export const applyTheme = async (name: string) => {
     if (item) {
         const { url, loaded } = item;
         if (!loaded) {
-            await wrapper.defineVSCodeTheme(name, async () => {
+            await defineVSCodeTheme(name, async () => {
                 const data = await fetch(url).then((res) => res.json());
                 item.loaded = data;
                 return data;
