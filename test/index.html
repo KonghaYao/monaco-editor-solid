@@ -23,7 +23,6 @@
             "imports": {
                 "monaco-editor-solid": "https://jsdelivr.deno.dev/npm/monaco-editor-solid@1.0.4/dist/index.min.js",
                 "monaco-editor-solid": "../dist/index.js",
-                "monaco-editor/":"https://cdn.skypack.dev/monaco-editor/",
                "solid-js": "https://cdn.skypack.dev/solid-js",
                 "solid-js/web": "https://cdn.skypack.dev/solid-js/web",
                 "vscode-icons-js": "https://cdn.skypack.dev/vscode-icons-js"
@@ -36,7 +35,7 @@
         FileEditorList,
         
         applyTheme,
-    } from "monaco-editor-solid";
+    } from "../dist/index";
     // console.log(wrapper);
     render(
         () =>
