@@ -18,24 +18,12 @@
 </style>
 
 <body></body>
-<script type="importmap">
-        {
-            "imports": {
-                "monaco-editor-solid": "https://jsdelivr.deno.dev/npm/monaco-editor-solid@1.0.4/dist/index.min.js",
-                "monaco-editor-solid": "../dist/index.js",
-               "solid-js": "https://cdn.skypack.dev/solid-js",
-                "solid-js/web": "https://cdn.skypack.dev/solid-js/web",
-                "vscode-icons-js": "https://cdn.skypack.dev/vscode-icons-js"
-            }
-        }
-    </script>
 <script type="module">
     import { render } from "solid-js/web";
     import {
         FileEditorList,
-        
         applyTheme,
-    } from "../dist/index";
+    } from "../src/index";
     // console.log(wrapper);
     render(
         () =>

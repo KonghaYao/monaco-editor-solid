@@ -15,7 +15,8 @@ export default {
         "vscode-icons-js",
         "solid-js",
         "solid-js/web",
-        // "monaco-editor",
+        "monaco-editor",
+        "@codingame/monaco-editor-wrapper"
     ],
     input: "./src/index.ts",
     output: {
@@ -32,7 +33,9 @@ export default {
                 if (thisFile.startsWith("https://")) {
                     return false;
                 }
-                if (thisFile.startsWith('monaco-editor')) return { id: thisFile.endsWith('.js') ? thisFile : thisFile + '.js', external: true }
+                if (thisFile.startsWith('monaco-editor')) return { id: thisFile, external: true }
+                if(thisFile.startsWith("@codingame/monaco-editor-wrapper")) return {id:thisFile,external:true}
+
                 if (!/^[[\w:]|\.|\/]/.test(thisFile)) console.log(thisFile);
             },
             load(id) {
@@ -51,13 +54,14 @@ export default {
                         "@codingame/monaco-editor-wrapper/dist/main.js"
                     )
                 ) {
-                    return {
-                        external: true,
-                        id: new URL(
-                            thisFile,
-                            "https://jsdelivr.deno.dev/npm/@codingame/monaco-editor-wrapper@3.9.3/dist/main.js"
-                        ).toString(),
-                    };
+                    // return {
+                    //     external: true,
+                    //     id: thisFile
+                    //     // id: new URL(
+                    //     //     thisFile,
+                    //     //     "https://jsdelivr.deno.dev/npm/@codingame/monaco-editor-wrapper@3.9.3/dist/main.js"
+                    //     // ).toString(),
+                    // };
                 }
             },
         },

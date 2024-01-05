@@ -10,9 +10,9 @@ import SplitHorizontal from "@vscode/codicons/src/icons/split-horizontal.svg";
     icon https://microsoft.github.io/vscode-codicons/dist/codicon.html
 */
 export {
+    Close,
     Left,
     Refresh,
-    Close,
     ScreenFull,
     ClearAll,
     LayoutSidebarLeft,
