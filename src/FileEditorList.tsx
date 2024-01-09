@@ -40,8 +40,8 @@ export const FileEditorList: Component<{
     return (
         <div class={[style.editor_list, "monaco-editor"].join(" ")}>
             <header class={style.editor_header}>
-                <span data-icon onclick={() => props.toggleExplorer()}>
-                    {LayoutSidebarLeft()}
+                <span data-icon innerHTML={LayoutSidebarLeft} onclick={() => props.toggleExplorer()}>
+                    
                 </span>
                 <div>File Editor</div>
                 <span
@@ -49,8 +49,8 @@ export const FileEditorList: Component<{
                     onclick={() => {
                         setFileList([...fileList(), []]);
                     }}
+                    innerHTML={SplitHorizontal}
                 >
-                    {SplitHorizontal()}
                 </span>
             </header>
             <div class={style.file_list}>

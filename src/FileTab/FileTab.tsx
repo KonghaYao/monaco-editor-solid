@@ -28,8 +28,8 @@ export const FileTab: Component<{
                     e.cancelBubble = true;
                     props.onclose();
                 }}
+                innerHTML={Close}
             >
-                {Close()}
             </div>
         </div>
     );
